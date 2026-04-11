@@ -1,0 +1,47 @@
+# Install PySpark (only if using Colab)
+!pip install pyspark
+
+from pyspark.sql import SparkSession
+from pyspark.sql.functions import col, sum, avg, count
+
+# Create Spark session
+spark = SparkSession.builder.appName("BigDataHackathon").getOrCreate()
+
+# Load dataset (make sure file name is correct)
+df = spark.read.csv("sample_data.csv", header=True, inferSchema=True)
+
+# Show data
+print("=== Dataset Preview ===")
+df.show()
+
+# Create total column
+df = df.withColumn("total", col("price") * col("quantity"))
+
+# 1. Total Sales by Category
+print("=== Total Sales by Category ===")
+category_sales = df.groupBy("category") \
+    .agg(sum("total").alias("total_sales")) \
+    .orderBy(col("total_sales").desc())
+category_sales.show()
+
+# 2. Top Selling Products
+print("=== Top Selling Products ===")
+top_products = df.groupBy("product") \
+    .agg(sum("quantity").alias("total_quantity")) \
+    .orderBy(col("total_quantity").desc())
+top_products.show()
+
+# 3. Average Price per Category
+print("=== Average Price per Category ===")
+avg_price = df.groupBy("category") \
+    .agg(avg("price").alias("avg_price"))
+avg_price.show()
+
+# 4. Transaction Count
+print("=== Transaction Count ===")
+transaction_count = df.groupBy("category") \
+    .agg(count("*").alias("transactions"))
+transaction_count.show()
+
+# Stop Spark
+spark.stop()
