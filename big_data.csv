@@ -1,0 +1,19 @@
+import pandas as pd
+import random
+
+rows = 100000  # 1 lakh rows
+
+data = {
+    "user_id": [i for i in range(rows)],
+    "product": [random.choice(["Mobile", "Laptop", "Shoes", "Tshirt", "Headphones"]) for _ in range(rows)],
+    "category": [random.choice(["Electronics", "Fashion"]) for _ in range(rows)],
+    "price": [random.randint(500, 50000) for _ in range(rows)],
+    "quantity": [random.randint(1, 5) for _ in range(rows)],
+    "date": pd.date_range(start="2023-01-01", periods=rows, freq="min")
+}
+
+df = pd.DataFrame(data)
+
+df.to_csv("/content/big_data.csv", index=False)
+
+print("Big dataset created ✅")
