@@ -35,3 +35,8 @@ Overall, this project showcases the practical application of big data processing
 ## Conclusion
 
 This project successfully demonstrates scalable big data analysis using PySpark. By leveraging distributed computing, it efficiently processes large datasets and extracts meaningful insights. The approach used in this project can be extended to real-world scenarios where handling large-scale data is critical for decision-making.
+
+#output
+
+
+<!-- Uploading "BigDataAnalysisOutput.rtf"... -->
