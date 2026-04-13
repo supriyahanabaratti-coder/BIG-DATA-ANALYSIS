@@ -38,4 +38,4 @@ This project successfully demonstrates scalable big data analysis using PySpark.
 
 #output
 
-[BigDataAnalysisOutput.doc](https://github.com/user-attachments/files/26647454/BigDataAnalysisOutput.doc)
+![Image](https://github.com/user-attachments/assets/29b8d0c5-63e8-4594-8e15-41566eaf179b)
